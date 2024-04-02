@@ -6,6 +6,5 @@ using std::vector;
 
 class Solution {
 public:
-    int rob(vector<int> &nums);
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid);
 };
-
