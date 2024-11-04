@@ -1,4 +1,6 @@
+#include <ctime>
 #include <iostream>
+#include <vector>
 
 #include "solution.h"
 
@@ -18,6 +20,19 @@ auto create_list(int arr[], int len) -> ListNode * {
     return head;
 }
 
+ListNode* create_list(const std::vector<int>& nums) {
+    if (nums.empty()) return nullptr;
+
+    ListNode* head = new ListNode(nums[0]);
+    ListNode* tail = head;
+
+    for (int i = 1; i < nums.size(); ++i) {
+        tail->next = new ListNode(nums[i]);
+        tail = tail->next;
+    }
+    return head;
+}
+
 void print_list(ListNode *head) {
     ListNode *temp = head;
     while (temp != nullptr) {
@@ -28,9 +43,9 @@ void print_list(ListNode *head) {
 }
 
 int main() {
-    int arr[5] = {1, 2, 3, 4, 5};
-    int n = 2;
-    ListNode *head = create_list(arr, 5);
+    std::vector<int> nums {1, 2};
+    int n = 1;
+    ListNode *head = create_list(nums);
     print_list(head);
     Solution solution;
     head = solution.removeNthFromEnd(head, n);
